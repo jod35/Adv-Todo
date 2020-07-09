@@ -5,30 +5,23 @@ const color_input=document.querySelector('#color');
 const buttons=document.querySelectorAll('.mybtn');
 const task_container=document.querySelector('.tasks');
 const task_input=document.querySelector('#task');
+const completed_tasks=document.querySelector('#complete-tasks');
 
 
-window.onload=function(){
-    if (body.style.backgroundColor=="#FFFFFF"){
-
-        for (let i = 0; i < buttons.length; i++) {
-            const element = array[i];
-    
-            element.classList.remove('mybtn');
-            
-        }
-        
-    }
-}
 
 
+
+
+//event listener for task form additon
 task_additon_form.addEventListener('submit',addTask);
+
 
 function addTask(e){
 
     // console.log(task_addition_form);
 
-    if (task_input.value ==null){
-        task_container.innerHTML=`
+    if (task_container.innerHTML ==null){
+        task_container.innerHTML+`
         
             <center>
             <h1>There are no tasks yet.</h1>
@@ -40,10 +33,11 @@ function addTask(e){
     else{
         task_container.innerHTML+=`
         <div class="task-item">
+        <input type="checkbox" name="complete" id="complete">
             <h4 class="task-name">${task_input.value}</h4>
             <div class="details">
                 <a href="#" class="detail-btn open"> &#9776;</a>
-               
+                <a href="#" class="close-btn white-text"> &times;</a>
             </div>
         </div>
         <div class="detail">
@@ -79,28 +73,64 @@ function addTask(e){
         
         `
     }
-    const detail_buttons=document.querySelectorAll('.task-item');
+    const task_items=document.querySelectorAll('.task-item');
+    const detail_buttons=document.querySelectorAll('.detail-btn');
     const details_divs=document.querySelectorAll('.detail');
-    const delete_button=document.querySelectorAll('.del-btn');
-    const complete_button=document.querySelectorAll('.succ-btn');
+    const close_buttons=document.querySelectorAll('.close-btn');
+    const complete=document.querySelectorAll('#complete');
 
+
+    //for number of completed tasks to display
+    for (let i = 0; i < task_items.length; i++) {
+        const element = task_items[i];
+        
+        const completed_iem=complete[i];
+
+        completed_iem.addEventListener('input',()=>{
+            element.style.display="none";
+            task_container.removeChild(element);
+            task_container.removeChild(details_divs[i])
+            // console.log(typeof parseInt(completed_tasks.innerHTML));
+
+
+            completed_task_numbers=parseInt(completed_tasks.innerHTML);
+            console.log(completed_task_numbers);
+            
+            completed_tasks.innerHTML=completed_task_numbers+=1;
+            
+            
+            
+            
+        })
+    }
+
+    //for the detail containers to display
     for (let i = 0; i < detail_buttons.length; i++) {
-        const element = detail_buttons[i];
+        const open_buttton = detail_buttons[i];
+        const close_buttton=close_buttons[i];
 
-            //check the div of the exact  parent element
+            //check the div of the exact  parent buttton
             const div = details_divs[i];
 
-            element.addEventListener('click',function(){
-               if (div.style.display=="block"){
-                  div.style.display="none";
-                
-               }
-               else{
+            open_buttton.addEventListener('click',function(){
+            
                 div.style.display="block";
+                open_buttton.style.display="none";
+                close_buttton.style.display="block";
+
+
+
+                close_buttton.addEventListener('click',function(){
+                    div.style.display="none";
+                    close_buttton.style.display="none";
+                    open_buttton.style.display="block";
+
+                });
+                
                
                
-               }
-            })
+            });
+
 
             
     }

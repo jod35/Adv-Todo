@@ -1,0 +1,166 @@
+:root{
+    --black:rgba(0, 0, 0, 0.596);
+    --white:white;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+nav{
+    background-color: var(--black);
+    width: 100%;
+    top: 0;
+    position: fixed;
+}
+.color-picker{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.white-text{
+    color: var(--white);
+}
+.mybtn
+{
+    border: none;
+    background-color: inherit;
+    color: var(--white);
+    border:1px solid var(--white);
+    padding: 10px;
+    font-weight: bolder;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.detail-btn{
+    text-decoration: none;
+}
+.close{
+    display: none;
+}
+.completed{
+
+    padding: 5px;
+    color: white;
+}
+#color{
+    border: none;
+}
+
+.tasks{
+    margin-top: 180px;
+}
+.tasks-input{
+    background-color: var(--black);
+    padding: 20px;
+}
+#task{
+    width: 95%;
+    padding: 20px;
+}
+.task-item{
+    display: flex;
+    /* border-radius: 10px; */
+    margin:5px;
+    cursor: pointer;
+    color: white;
+    justify-content: space-between;
+    background-color: var(--black);
+    width: 100%;
+    padding: 20px;
+}
+.task-item:hover{
+    background-color: rgba(0, 0, 0, 0.39);
+    color: var(--white);
+}
+
+.tasks-input{
+    position: fixed;
+    top: 80px;
+    width: 100%;
+}
+.detail-btn{
+    color: var(--white);
+    font-size: 1.5;
+    font-weight: bold;
+}
+.detail{
+    display: none;
+    color: var(--white);
+    background-color: var(--black);
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    border-radius: 10px;
+    font-weight: bold;
+    
+}
+.details-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    /* background-color: inherit; */
+}
+.notes{
+    width:  60%;
+}
+.notes textarea{
+    width: 100%;
+    background-color: inherit;
+    border:1px solid rgba(255, 255, 255, 0.938);
+    color: white;
+}
+.others{
+    width: 30%;
+}
+.priority{
+    padding: 10px;
+    margin: 10px;
+}
+
+.priority select{
+    width: 100%;
+
+    padding: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+
+.time{
+    padding: 10px;
+    margin:10px ;
+}
+#time{
+    width: 100%;
+    padding: 10px;
+   
+}
+
+.del{
+    padding: 10px;
+    margin: 10px;
+}
+.del-btn{
+    background-color: red;
+    color: white;
+    padding: 16px;
+    border-radius: 7px;
+    text-decoration: none;
+    
+}
+.succ-btn{
+    background-color: green;
+    color: white;
+    padding: 16px;
+    border-radius: 7px;
+    text-decoration: none;
+}

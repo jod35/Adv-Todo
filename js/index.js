@@ -27,46 +27,58 @@ function addTask(e){
 
     // console.log(task_addition_form);
 
-    task_container.innerHTML+=`
-    <div class="task-item">
-        <h4 class="task-name">${task_input.value}</h4>
-        <div class="details">
-            <a href="#" class="detail-btn open"> &#9776;</a>
-           
+    if (task_input.value ==null){
+        task_container.innerHTML=`
+        
+            <center>
+            <h1>There are no tasks yet.</h1>
+            </center>
+        
+        `
+    }
+
+    else{
+        task_container.innerHTML+=`
+        <div class="task-item">
+            <h4 class="task-name">${task_input.value}</h4>
+            <div class="details">
+                <a href="#" class="detail-btn open"> &#9776;</a>
+               
+            </div>
         </div>
-    </div>
-    <div class="detail">
-        <div class="details-container">
-            <div class="notes">
-                    <div class="notes">
-                    <label for="notes">What to do</label>
-                    <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+        <div class="detail">
+            <div class="details-container">
+                <div class="notes">
+                        <div class="notes">
+                        <label for="notes">What to do</label>
+                        <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Enter your description"></textarea>
+                        </div>
+                </div>
+                <div class="others">
+                        <div class="priority">
+                            <label for="priority">Priority</label>
+                            <select name="priority" id="priority">
+                                <option value="none">None</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="time">
+                            <label for="time">Time</label>
+                            <input type="date" name="time" id="time">
+                        </div>
+                        <div class="del">
+                        <a href="#" id="del-btn" class="del-btn"> Delete</a>
+                        <a href="#" id="del-btn" class="succ-btn">Completed</a>
+                        </div>
                     </div>
             </div>
-            <div class="others">
-                    <div class="priority">
-                        <label for="priority">Priority</label>
-                        <select name="priority" id="priority">
-                            <option value="none">None</option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-                    <div class="time">
-                        <label for="time">Time</label>
-                        <input type="date" name="time" id="time">
-                    </div>
-                    <div class="del">
-                    <a href="#" id="del-btn" class="del-btn"> Delete</a>
-                    <a href="#" id="del-btn" class="succ-btn">Completed</a>
-                    </div>
-                </div>
         </div>
-    </div>
-    
-    
-    `
+        
+        
+        `
+    }
     const detail_buttons=document.querySelectorAll('.task-item');
     const details_divs=document.querySelectorAll('.detail');
     const delete_button=document.querySelectorAll('.del-btn');

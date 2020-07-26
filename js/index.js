@@ -6,6 +6,7 @@ const buttons=document.querySelectorAll('.mybtn');
 const task_container=document.querySelector('.tasks');
 const task_input=document.querySelector('#task');
 const completed_tasks=document.querySelector('#complete-tasks');
+const no_tasks_div=document.querySelector('.no-tasks');
 
 
 
@@ -20,24 +21,23 @@ function addTask(e){
 
     // console.log(task_addition_form);
 
-    if (task_container.innerHTML ==null){
+    if (!task_container.innerHTML){
         task_container.innerHTML+`
         
-            <center>
-            <h1>There are no tasks yet.</h1>
-            </center>
+           
         
         `
     }
 
     else{
+        no_tasks_div.style.display="none";
         task_container.innerHTML+=`
         <div class="task-item">
         <input type="checkbox" name="complete" id="complete">
             <h4 class="task-name">${task_input.value}</h4>
             <div class="details">
                 <a href="#" class="detail-btn open"> &#9776;</a>
-                <a href="#" class="close-btn white-text"> &times;</a>
+                <b><a href="#" class="close-btn white-text"> &times;</a></b>
             </div>
         </div>
         <div class="detail">
@@ -78,7 +78,10 @@ function addTask(e){
     const details_divs=document.querySelectorAll('.detail');
     const close_buttons=document.querySelectorAll('.close-btn');
     const complete=document.querySelectorAll('#complete');
+    
 
+
+  
 
     //for number of completed tasks to display
     for (let i = 0; i < task_items.length; i++) {
@@ -97,8 +100,14 @@ function addTask(e){
             console.log(completed_task_numbers);
             
             completed_tasks.innerHTML=completed_task_numbers+=1;
+
             
+
+            // if (task_items.length==0){
+            //     alert("all tasks are complete.");    
+            // }
             
+          
             
             
         })
@@ -151,4 +160,10 @@ function changeBodyBckground(e){
 
 }
 
+const clear_button=document.querySelector('#clear-btn');
 
+clear_button.addEventListener('click',resetCompleteTasks);
+function resetCompleteTasks(){
+    completed_tasks.innerHTML="0";
+    console.log(clear_button);
+}
